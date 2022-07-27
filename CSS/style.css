@@ -1,0 +1,58 @@
+.card, .cardcombat {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border-radius: 5px;
+}
+
+.card:hover, .cardcombat:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+img {
+  border-radius: 5px 5px 0 0;
+}
+
+#containerindex, #containercombat {
+  display: flex;
+  margin: auto;
+}
+
+
+nav li,
+footer li {
+  display: inline-block;
+}
+nav ul {
+  display: flex;
+  margin: 0 -10px;
+  align-items: center;
+}
+nav li a {
+  color: white;
+  font-weight: bolder;
+  margin: 0 10px;
+}
+nav {
+  background-color: #222222;
+  padding: 30px;
+}
+nav img {
+  margin-right: auto;
+  width: 200px;
+}
+
+
+
+
+
+@media only screen and (max-width: 600px) {
+  nav img {
+    display: none;
+  }
+  nav ul {
+    justify-content: center;
+  }
+  #textprincipal p {
+    margin: 30px;
+  }
+}
