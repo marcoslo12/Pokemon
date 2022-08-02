@@ -1,4 +1,4 @@
-let atac1;
+let atac1,nom1;
 window.addEventListener('load', function() {
     let elem = document.getElementById("containercombat"); 
     for(let i=0;i<10;i++){
@@ -7,7 +7,7 @@ window.addEventListener('load', function() {
         fetch('https://pokeapi.co/api/v2/pokemon/' + random)
         .then(response => response.json())
         .then(data => {
-            newItem = '<div class=\"scene scene--card\"><div class=\"cardcombat\" id=\"card'+i+'\"onclick=\"flip('+i+','+data['stats'][1]['base_stat']+',' +data['stats'][2]['base_stat']+ ')\">';
+            newItem = '<div class=\"scene scene--card\"><div class=\"cardcombat\" id=\"card'+i+'\"onclick=\"flip('+i+','+data['stats'][1]['base_stat']+',' +data['stats'][2]['base_stat']+ ',\'' + data['name'] +'\')\">';
             newItem += '<div class=\"card__face card__face--front\" ></div>';
             newItem += '<div class=\"card__face card__face--back\">';
             //img
@@ -27,7 +27,10 @@ window.addEventListener('load', function() {
 
 
 });
-function flip(id,atac,defensa){
+function flip(id,atac,defensa, nom){
+    let element=document.getElementById("resultat"); 
+
+
     //girem si hi ha menys de 2 cartes
     if(document.getElementsByClassName('is-flipped').length <2){
         document.getElementById("card"+id).classList.toggle('is-flipped');
@@ -36,22 +39,21 @@ function flip(id,atac,defensa){
     //si es la primera guardem l'atac
     if(document.getElementsByClassName('is-flipped').length ==1){
         atac1=atac;
+        nom1=nom;
     }
 
     
     if(document.getElementsByClassName('is-flipped').length==2){
         //si es la segona fem el combat
         if(atac1>defensa){
-            console.log("guanya1")
+            newItem = '<p>' + nom1 + ' ataca i guanya a ' + nom + '</p>';
         }
-        else if(atac1<defensa){
-            console.log("perd")
-        }
-        else{
-            console.log("empat")
+        else if(atac1<=defensa){
+            newItem = '<p>' + nom1 + ' ataca i perd contra ' + nom + '</p>';
         }
         document.getElementById("reload").style.visibility = 'visible';
-        
+        document.getElementById("reload2").style.visibility = 'visible';
+        element.innerHTML += newItem;
     }
 }
 
@@ -61,4 +63,5 @@ function reload(){
         element[0].classList.remove('is-flipped')
     }
     document.getElementById("reload").style.visibility = 'hidden';
+    document.getElementById("reload2").style.visibility = 'hidden';
 }
