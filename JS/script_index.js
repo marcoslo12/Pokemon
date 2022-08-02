@@ -12,7 +12,7 @@ window.addEventListener('load', function() {
       .then(response => response.json())
         .then(data => {
           console.log(data)
-          newItem = '<div class=\"card\">';
+          newItem = '<div class=\"cardindex\">';
           //img
           if(data['sprites']['front_default'] != null){
             newItem += '<img src=\"'  + data['sprites']['front_default'] + '"/>';
@@ -44,7 +44,7 @@ window.addEventListener('load', function() {
       fetch('https://pokeapi.co/api/v2/pokemon/' + random)
       .then(response => response.json())
         .then(data => {
-          newItem = '<div class=\"card\">';
+          newItem = '<div class=\"cardindex\">';
           //img
           if(data['sprites']['front_default'] != null){
             newItem += '<img src=\"'  + data['sprites']['front_default'] + '"/>';
@@ -71,7 +71,7 @@ window.addEventListener('load', function() {
 
 function buscar() {
   let input = document.getElementById('buscador').value;
-  let container = document.getElementsByClassName("card");
+  let container = document.getElementsByClassName("cardindex");
   for (i = 0; i < pokemon.length; i++) { 
       if (!pokemon[i].includes(input)) {
           container[i].style.display="none";
