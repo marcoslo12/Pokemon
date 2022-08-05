@@ -3,9 +3,14 @@
   transition: 0.3s;
   border-radius: 8px;
   margin: 30px;
-  width: 160px;
+  width: 200px;
   text-align: center;
-  padding: 20px;
+  padding: 25px;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .cardindex img, .cardcombat img{
   width: 120px;
@@ -15,14 +20,15 @@
   box-shadow: 0 12px 24px 0 rgba(0,0,0,0.2);
 }
 
-img {
-  border-radius: 5px 5px 0 0;
-}
 
 #containerindex, #containercombat {
   display: flex;
   margin: auto;
   flex-wrap: wrap;
+ 
+  align-items: center;
+  text-align: center; 
+  justify-content: center;
 }
 
 
@@ -49,21 +55,15 @@ nav img {
   width: 200px;
 }
 
+header{
+  text-align: center;
 
-.scene {
-  display: inline-block;
-  width: 200px;
-  height: 260px;
-/*   border: 1px solid #CCC; */
-  margin: 40px 10px;
-  perspective: 600px;
+	font-size: 2em;
 }
 
+
+
 .cardcombat {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
   transform-style: preserve-3d;
   transform-origin: center right;
   transition: transform 1s;
@@ -74,11 +74,6 @@ nav img {
 }
 
 .card__face {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  font-weight: bold;
   backface-visibility: hidden;
 }
 
@@ -104,14 +99,120 @@ button:hover{
 	color: white;
 }
 
+
+.search {
+  display: flex;
+  align-items: center;
+  text-align: center; 
+  justify-content: center;
+}
+
+.search__input {
+  font-family: inherit;
+  font-size: inherit;
+  background-color: #f4f2f2;
+  border: none;
+  color: #646464;
+  padding: 0.7rem 1rem;
+  border-radius: 30px;
+  width: 12em;
+  transition: all ease-in-out .5s;
+  margin-right: -2rem;
+  width: 350px;
+}
+
+.search__input:hover, .search__input:focus {
+  box-shadow: 0 0 1em #00000013;
+}
+
+.search__input:focus {
+  outline: none;
+  background-color: #f0eeee;
+}
+
+.search__input::-webkit-input-placeholder {
+  font-weight: 100;
+  color: #ccc;
+}
+
+.search__input:focus + .search__button {
+  background-color: #f0eeee;
+}
+
+
+.search__icon {
+  height: 1.3em;
+  width: 1.3em;
+  fill: #b4b4b4;
+}
+
+
+.switch {
+  font-size: 17px;
+  position: relative;
+  display: inline-block;
+  width: 3.5em;
+  height: 2em;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  --background: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--background);
+  transition: .5s;
+  border-radius: 30px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 1.4em;
+  width: 1.4em;
+  border-radius: 50%;
+  left: 10%;
+  bottom: 15%;
+  box-shadow: inset 8px -4px 0px 0px #fff000;
+  background: var(--background);
+  transition: .5s;
+}
+
+input:checked + .slider {
+  background-color: black;
+}
+
+input:checked + .slider:before {
+  transform: translateX(100%);
+  box-shadow: inset 15px -4px 0px 15px #fff000;
+}
+
+
+.buttons{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.buttons button{
+  margin: 20px;
+}
+p{
+  text-align: center;
+}
 @media only screen and (max-width: 600px) {
   nav img {
     display: none;
   }
   nav ul {
     justify-content: center;
-  }
-  #textprincipal p {
-    margin: 30px;
   }
 }

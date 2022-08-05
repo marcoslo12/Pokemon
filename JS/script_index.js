@@ -4,14 +4,15 @@ window.addEventListener('load', function() {
  
 
   if(this.location.href.includes("pokeID")){
+    document.getElementById("divbusc").style.display = 'none';
     const urlParams = new URLSearchParams(window.location.search);
-    id = urlParams.get('pokeID');
+    id = urlParams.get('pokeID');    
+    console.log(document.getElementsByClassName("search"))
     backButton = '<div><button onclick="history.back()">Atrás</button></div>'
     elem.innerHTML = backButton;
     fetch('https://pokeapi.co/api/v2/pokemon/' + id)
       .then(response => response.json())
         .then(data => {
-          console.log(data)
           newItem = '<div class=\"cardindex\">';
           //img
           if(data['sprites']['front_default'] != null){

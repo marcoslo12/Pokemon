@@ -1,5 +1,9 @@
 let atac1,nom1;
 window.addEventListener('load', function() {
+    if(this.location.href.includes("combat")) console.log("combat")
+    theme();
+
+    //document.querySelector('#theme').checked = true;
     let elem = document.getElementById("containercombat"); 
     for(let i=0;i<10;i++){
         //falta duplicados
@@ -7,7 +11,7 @@ window.addEventListener('load', function() {
         fetch('https://pokeapi.co/api/v2/pokemon/' + random)
         .then(response => response.json())
         .then(data => {
-            newItem = '<div class=\"scene scene--card\"><div class=\"cardcombat\" id=\"card'+i+'\"onclick=\"flip('+i+','+data['stats'][1]['base_stat']+',' +data['stats'][2]['base_stat']+ ',\'' + data['name'] +'\')\">';
+            newItem = '<div class=\"cardcombat\" id=\"card'+i+'\"onclick=\"flip('+i+','+data['stats'][1]['base_stat']+',' +data['stats'][2]['base_stat']+ ',\'' + data['name'] +'\')\">';
             newItem += '<div class=\"card__face card__face--front\" ></div>';
             newItem += '<div class=\"card__face card__face--back\">';
             //img
@@ -20,11 +24,10 @@ window.addEventListener('load', function() {
             newItem += '<p><strong>Atac: </strong>'+ data['stats'][1]['base_stat']+'</p>';
             //defensa
             newItem += '<p><strong>Defensa: </strong>'+ data['stats'][2]['base_stat']+'</p>';
-            newItem += '</div></div></div>';
+            newItem += '</div></div>';
             elem.innerHTML += newItem;
         });
     }
-
 
 });
 function flip(id,atac,defensa, nom){
@@ -53,7 +56,11 @@ function flip(id,atac,defensa, nom){
         }
         document.getElementById("reload").style.visibility = 'visible';
         document.getElementById("reload2").style.visibility = 'visible';
-        element.innerHTML += newItem;
+        element.innerHTML = newItem;
+        //eliminen la funcio onclick
+        for(let i=0;i<document.getElementsByClassName("cardcombat").length;i++){
+            document.getElementsByClassName("cardcombat")[i].style.pointerEvents = "none";
+        }
     }
 }
 
@@ -64,4 +71,21 @@ function reload(){
     }
     document.getElementById("reload").style.visibility = 'hidden';
     document.getElementById("reload2").style.visibility = 'hidden';
+    document.getElementById("resultat").innerHTML ="";
+
+    //eliminen la funcio onclick
+    for(let i=0;i<document.getElementsByClassName("cardcombat").length;i++){
+        document.getElementsByClassName("cardcombat")[i].style.pointerEvents = "auto";
+    }
+}
+
+function theme(){
+    //claro
+    if(document.querySelector('#theme').checked){
+        console.log("1")
+    }
+    //oscuro
+    else {
+        console.log("2")
+    }
 }
