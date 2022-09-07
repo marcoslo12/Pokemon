@@ -6,10 +6,11 @@ window.addEventListener('load', function() {
 
     if(sessionStorage.getItem("theme")=="clar"){
         document.querySelector('#theme').checked = true;
+        document.documentElement.setAttribute('tema','dark');
     }
     else{
-        document.querySelector('#theme').checked = false;
-
+        document.querySelector('#theme').checked = false;        
+        document.documentElement.setAttribute('tema','light');
     }
 
     if(this.location.href.includes("combat")){
@@ -180,10 +181,13 @@ function theme(){
     //clar
     if(document.querySelector('#theme').checked){
         sessionStorage.setItem("theme", "clar")
+        document.documentElement.setAttribute('tema','dark');
     }
     //fosc
     else {
         sessionStorage.setItem("theme", "fosc")
+        document.documentElement.setAttribute('tema','light');
+
     }
 }
 

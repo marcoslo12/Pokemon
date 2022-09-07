@@ -1,13 +1,25 @@
-:root {
-  --color-fuente: #ffffff;
-  --color-fondo: #000;
-}
-
 [tema="light"]{
-  --color-fuente: #000;
-  --color-fondo: #fff;
+  --color-fuente: black;
+  --color-fondo: white;
+  --color-button: #222222;
+  --color-card: white;
+  --color-fondo-search: #f4f2f2;
+  --color-texto-search: #646464;
 }
 
+[tema="dark"] {
+  --color-fuente: white;
+  --color-fondo: #343436;
+  --color-button: white;
+  --color-card: #343436;
+  --color-fondo-search: #646464;
+  --color-texto-search: #f4f2f2;
+}
+
+body{
+  background-color: var(--color-fondo);
+  color: var(--color-fuente);
+}
 
 .cardindex, .cardcombat {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -22,6 +34,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background-color: var(--color-card);
 }
 .cardindex img, .cardcombat img{
   width: 120px;
@@ -56,6 +69,7 @@ nav li a {
   color: white;
   font-weight: bolder;
   margin: 0 10px;
+  text-decoration: none;
 }
 nav {
   background-color: rgb(68, 64, 64);
@@ -97,19 +111,17 @@ header{
 
 button{
   padding: 12px;
-  background: white;
+  background: var(--color-fondo);
 	border-radius: 6px;
-	color: #222222;
-	transition-duration: 0.4s;
-  
+	color: var(--color-button);
+	transition-duration: 0.4s;  
   margin: 20px;
 }
 
 button:hover{
-  background-color: #222222; /* Green */
-	color: white;
+  background-color: var(--color-button); 
+	color: var(--color-fondo);
 }
-
 
 .search {
   display: flex;
@@ -121,9 +133,9 @@ button:hover{
 .search__input {
   font-family: inherit;
   font-size: inherit;
-  background-color: #f4f2f2;
+  background-color: var(--color-fondo-search);
   border: none;
-  color: #646464;
+  color: var(--color-texto-search);
   padding: 0.7rem 1rem;
   border-radius: 30px;
   width: 12em;
@@ -138,16 +150,16 @@ button:hover{
 
 .search__input:focus {
   outline: none;
-  background-color: #f0eeee;
+  background-color: var(--color-fondo-search);
 }
 
 .search__input::-webkit-input-placeholder {
   font-weight: 100;
-  color: #ccc;
+  color: var(--color-fondo-search);
 }
 
 .search__input:focus + .search__button {
-  background-color: #f0eeee;
+  background-color: var(--color-fondo-search);
 }
 
 
@@ -237,5 +249,8 @@ p{
   }
   nav ul {
     justify-content: center;
+  }
+  .search{
+    flex-direction: column;
   }
 }
